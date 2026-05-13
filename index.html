@@ -3,116 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Portal E-Absen & Rekap</title>
+    <title>E-Absen Karyawan</title>
     <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/684/684908.png">
     <style>
         body, html {
             margin: 0;
             padding: 0;
             height: 100%;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            display: flex;
-            flex-direction: column;
+            overflow: hidden; 
         }
-
-        /* Container untuk Iframe */
-        .content-container {
-            flex: 1;
-            position: relative;
-        }
-
         iframe {
-            position: absolute;
-            top: 0; left: 0;
             width: 100%;
             height: 100%;
             border: none;
-            display: none; /* Sembunyikan semua iframe di awal */
-        }
-
-        iframe.active {
-            display: block; /* Tampilkan hanya yang aktif */
-        }
-
-        /* Navigasi Tab (Mirip referensi image_714a43.png) */
-        .tab-bar {
-            display: flex;
-            background-color: #f8f9fa;
-            border-top: 2px solid #ddd;
-            height: 60px;
-        }
-
-        .tab-button {
-            flex: 1;
-            padding: 10px;
-            text-align: center;
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-weight: bold;
-            color: #555;
-            transition: 0.3s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 14px;
-        }
-
-        /* Warna khusus untuk Tab Aktif */
-        .tab-button.active-absen {
-            background-color: #e8f5e9;
-            color: #2e7d32;
-            border-top: 4px solid #2e7d32;
-        }
-
-        .tab-button.active-rekap {
-            background-color: #fff3e0;
-            color: #ef6c00;
-            border-top: 4px solid #ef6c00;
+            display: block;
         }
     </style>
 </head>
 <body>
-
-    <div class="content-container">
-        <!-- Iframe Absensi -->
-        <iframe id="iframeAbsen" class="active" src="https://script.google.com/macros/a/~/s/AKfycbxzcPb1ISQqAQFVsoHArOBr90N4fW_yUyKdnMZu7-o0AgC7SWFXw_9LTGUGDwBXgewn/exec" allow="geolocation"></iframe>
-        
-        <!-- Iframe Rekap -->
-        <iframe id="iframeRekap" src="https://script.google.com/a/~/macros/s/AKfycbwfyoL6tzGwZfcSwXJfIY2NDgsCxR-W3-dZNfvsO7pGlzmsJpX33dFSAdenIxqBlYHL/exec" allow="geolocation"></iframe>
-    </div>
-
-    <!-- Navigasi Bawah -->
-    <div class="tab-bar">
-        <div id="btnAbsen" class="tab-button active-absen" onclick="showTab('absen')">
-            Presensi Karyawan
-        </div>
-        <div id="btnRekap" class="tab-button" onclick="showTab('rekap')">
-            Rekap Transaksi
-        </div>
-    </div>
-
-    <script>
-        function showTab(type) {
-            const iframeAbsen = document.getElementById('iframeAbsen');
-            const iframeRekap = document.getElementById('iframeRekap');
-            const btnAbsen = document.getElementById('btnAbsen');
-            const btnRekap = document.getElementById('btnRekap');
-
-            if (type === 'absen') {
-                iframeAbsen.classList.add('active');
-                iframeRekap.classList.remove('active');
-                
-                btnAbsen.classList.add('active-absen');
-                btnRekap.classList.remove('active-rekap');
-            } else {
-                iframeRekap.classList.add('active');
-                iframeAbsen.classList.remove('active');
-                
-                btnRekap.classList.add('active-rekap');
-                btnAbsen.classList.remove('active-absen');
-            }
-        }
-    </script>
+    <iframe src="https://script.google.com/macros/s/AKfycbxzcPb1ISQqAQFVsoHArOBr90N4fW_yUyKdnMZu7-o0AgC7SWFXw_9LTGUGDwBXgewn/exec" allow="geolocation"></iframe>
 </body>
 </html>
