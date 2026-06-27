@@ -59,20 +59,25 @@
         #btnAbsen.active { background-color: #e6f4ea; border-top: 4px solid #188038; }
 
         /* Tombol Rekap (Kuning/Orange) */
-        #btnRekap { color: #d48806; }
+        #btnRekap { color: #d48806; border-right: 1px solid #eee; }
         #btnRekap.active { background-color: #fffbe6; border-top: 4px solid #d48806; }
+
+        /* Tombol Neraca (Biru) */
+        #btnNeraca { color: #1a73e8; }
+        #btnNeraca.active { background-color: #e8f0fe; border-top: 4px solid #1a73e8; }
     </style>
 </head>
 <body>
 
     <div class="content">
-        <!-- LINK 1: Absensi -->
         <iframe id="frameAbsen" class="active" allow="geolocation" 
             src="https://script.google.com/a/~/macros/s/AKfycby0FtbUF2gOVQysy8UXRXR2-3j9Glpk5Mz5Vn5l1odopvU0oD-BcPAeLTj1fnvqO3_Oaw/exec"></iframe>
         
-        <!-- LINK 2: Rekap -->
         <iframe id="frameRekap" allow="geolocation" 
             src="https://script.google.com/a/~/macros/s/AKfycbyNuxRagtmcaBJCV3lcYXdeqcXnXse4Quo8PlvfGnFJotDnxDOSAepWQlRRA-nFBv5zEA/exec"></iframe>
+            
+        <iframe id="frameNeraca" allow="geolocation" 
+            src="https://script.google.com/a/~/macros/s/AKfycbx9oE-r3GP-eJEyVdLEvK9YX3X6uWq2uhk0snlQ0nnbQQ-HAuaSg6qdVPvIaF62mHk/exec"></iframe>
     </div>
 
     <div class="bottom-nav">
@@ -84,25 +89,42 @@
             <span>📊</span>
             Rekap
         </button>
+        <button id="btnNeraca" class="tab-btn" onclick="switchTab('neraca')">
+            <span>⚖️</span>
+            Neraca
+        </button>
     </div>
 
     <script>
         function switchTab(tab) {
+            // Ambil semua elemen iframe
             const fAbsen = document.getElementById('frameAbsen');
             const fRekap = document.getElementById('frameRekap');
+            const fNeraca = document.getElementById('frameNeraca');
+            
+            // Ambil semua elemen tombol
             const bAbsen = document.getElementById('btnAbsen');
             const bRekap = document.getElementById('btnRekap');
+            const bNeraca = document.getElementById('btnNeraca');
 
+            // Hapus class 'active' dari semua elemen (Reset)
+            fAbsen.classList.remove('active');
+            fRekap.classList.remove('active');
+            fNeraca.classList.remove('active');
+            bAbsen.classList.remove('active');
+            bRekap.classList.remove('active');
+            bNeraca.classList.remove('active');
+
+            // Tambahkan class 'active' hanya pada tab yang diklik
             if (tab === 'absen') {
                 fAbsen.classList.add('active');
-                fRekap.classList.remove('active');
                 bAbsen.classList.add('active');
-                bRekap.classList.remove('active');
-            } else {
+            } else if (tab === 'rekap') {
                 fRekap.classList.add('active');
-                fAbsen.classList.remove('active');
                 bRekap.classList.add('active');
-                bAbsen.classList.remove('active');
+            } else if (tab === 'neraca') {
+                fNeraca.classList.add('active');
+                bNeraca.classList.add('active');
             }
         }
     </script>
